@@ -207,6 +207,8 @@ security_search_for_invalid_owner: no                        # V-72007
 security_search_for_invalid_group_owner: no                  # V-72009
 # Set user/group owners on each home directory and set mode to 0750.
 security_set_home_directory_permissions_and_owners: no       # V-72017 / V-72019 / V-72021
+# Find all world-writable directories and display them.
+security_find_world_writable_dirs: no                        # V-72047
 
 ## Graphical interfaces (graphical)
 # Disable automatic gdm logins
@@ -299,6 +301,7 @@ security_package_clean_on_remove: no                         # V-71987
 security_rhel7_automatic_package_updates: no                 # V-71999
 # Install packages for multi-factor authentication.
 security_install_multifactor_auth_packages: yes              # V-72417
+security_check_package_checksums: no                         # V-71855
 
 ## RPM (rpm)
 # Enable GPG checks for packages and repository data.

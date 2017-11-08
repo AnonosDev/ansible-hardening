@@ -124,6 +124,8 @@
   changed_when: False
   failed_when: False
   check_mode: no
+  when:
+    - security_find_world_writable_dirs | bool
   tags:
     - always
 
@@ -134,6 +136,7 @@
       {{ world_writable_dirs.stdout }}
   when:
     - world_writable_dirs is defined
+    - not world_writable_dirs | skipped
   tags:
     - medium
     - file_perms
