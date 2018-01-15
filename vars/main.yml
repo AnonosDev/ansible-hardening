@@ -20,6 +20,11 @@
 #   - vars/redhat.yml
 #   - vars/ubuntu.yml
 
+## grub custom configuration
+grub_custom_file: /etc/grub.d/40_custom
+## grub main linux configuration
+grub_linux_file: /etc/grub.d/10_linux
+
 ## auditd configuration
 auditd_config:
   - parameter: disk_full_action
@@ -344,3 +349,6 @@ sysctl_settings_rhel7:
   - name: kernel.randomize_va_space
     value: 2
     enabled: "{{ security_enable_aslr | bool }}"
+  - name: net.ipv6.conf.all.disable_ipv6
+    value: 1
+    enabled: "{{ (security_contrib_enabled | bool) and (security_contrib_disable_ipv6 | bool) }}"
