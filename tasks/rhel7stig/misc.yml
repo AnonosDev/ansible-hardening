@@ -194,7 +194,8 @@
   command: freshclam
   changed_when: False
   when:
-    - freshclam_proc.rc != 0
+    - not freshclam_proc|skipped
+    - freshclam_proc.rc is defined and freshclam_proc.rc != 0
     - clamav_install_check.stat.exists
     - security_enable_virus_scanner | bool
     - security_run_virus_scanner_update | bool
